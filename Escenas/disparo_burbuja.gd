@@ -5,3 +5,7 @@ extends Area2D
 
 func _physics_process(delta: float) -> void:
 	translate(movement_vector * speed * delta)
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

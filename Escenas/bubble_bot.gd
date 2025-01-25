@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
+signal has_died
+signal was_hit(damage)
+
 @export var speed = 300
 @onready var sprite : Sprite2D
 @onready var animation_player = $AnimationPlayer
+const MAX_HEALTH = 100
+var health = MAX_HEALTH
 
 const PROJECTILE = preload("res://Escenas/disparo_burbuja.tscn")
 
@@ -25,7 +30,7 @@ func _physics_process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("spin"):
-		animation_player.play("spin")
+		animation_player.play("Spin")
 	elif event.is_action_pressed("shoot"):
 		var new_projectile = PROJECTILE.instantiate()
 		
@@ -39,6 +44,29 @@ func _input(event):
 		# Posición inicial del proyectil
 		new_projectile.global_position = global_position
 		add_sibling(new_projectile)
+		animation_player.play("Shoot")
+	
+	# TEMPORAL - REMOVE ASAP
+	elif event.is_action_pressed("debug_self_hit"):
+		take_damage(1)
+	elif event.is_action_pressed("debug_self_kill"):
+		take_damage(100)
 
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	animation_player.play("Idle")
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Death":
+		print("YOU DIED!")
+		queue_free()
+	else:
+		animation_player.play("Idle")
+
+func take_damage(damage):
+	var prev_hp = health
+	health -= damage
+	
+	if health <= 0.0:
+		has_died.emit()
+		animation_player.play("Death")
+	elif prev_hp != health:
+		was_hit.emit(damage)
+		animation_player.play("Hit")
+		
