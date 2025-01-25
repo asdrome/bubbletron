@@ -54,7 +54,7 @@ func _input(event):
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
-		print("YOU DIED!")
+		has_died.emit()
 		queue_free()
 	else:
 		animation_player.play("Idle")
@@ -64,7 +64,7 @@ func take_damage(damage):
 	health -= damage
 	
 	if health <= 0.0:
-		has_died.emit()
+		# La animacion emitirá la señal
 		animation_player.play("Death")
 	elif prev_hp != health:
 		was_hit.emit(damage)

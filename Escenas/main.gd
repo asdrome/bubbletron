@@ -21,4 +21,10 @@ func _on_menu_start_game() -> void:
 	current_scene = starting_scene.instantiate()
 	get_tree().root.add_child(current_scene)
 	$Menu.visible = false
+	current_scene.game_over.connect(_on_game_over)
+	
+func _on_game_over() -> void:
+	current_scene.queue_free()
+	current_scene = $Menu
+	$Menu.visible = true
 	

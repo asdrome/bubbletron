@@ -5,6 +5,7 @@ extends Area2D
 
 func _physics_process(delta: float) -> void:
 	translate(movement_vector * speed * delta)
+	position.y += sin(position.x * delta) * randi()
 
 
 func _on_timer_timeout() -> void:
