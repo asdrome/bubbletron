@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://8sm1i7dpvupv"]
+[gd_scene load_steps=5 format=3 uid="uid://8sm1i7dpvupv"]
 
 [ext_resource type="Texture2D" uid="uid://dkwmrgfsosgeg" path="res://Assets/IU/Bateria1.png" id="1_peb2f"]
+[ext_resource type="Texture2D" uid="uid://cq5f41jb7cvrw" path="res://Assets/IU/Burbuja.png" id="2_cswj6"]
+[ext_resource type="Texture2D" uid="uid://bpui78x02ojrx" path="res://Assets/IU/PilaVacia.png" id="2_fyldm"]
+[ext_resource type="Texture2D" uid="uid://bqqw21x8kp3ap" path="res://Assets/IU/Pila.png" id="3_cm7ul"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -45,6 +48,22 @@ layout_mode = 2
 texture = ExtResource("1_peb2f")
 expand_mode = 1
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+fill_mode = 2
+texture_under = ExtResource("2_fyldm")
+texture_progress = ExtResource("3_cm7ul")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TextureProgressBar"]
+visible = false
+layout_mode = 0
+offset_left = 102.256
+offset_top = 157.371
+offset_right = 142.256
+offset_bottom = 180.371
+scale = Vector2(1.87247, 2.32549)
+text = "100"
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -52,3 +71,13 @@ size_flags_vertical = 3
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_cswj6")
+expand_mode = 1
