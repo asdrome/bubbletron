@@ -9,7 +9,7 @@
 [node name="Dia" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_37t85")]
-position = Vector2(-104, 120)
+position = Vector2(119, 610)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
