@@ -1,128 +1,67 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgdjx7lpencvj"]
+[gd_scene load_steps=7 format=3 uid="uid://cgdjx7lpencvj"]
 
 [ext_resource type="Script" uid="uid://dyqyhyxt2uxh7" path="res://Escenas/bubble_bot.gd" id="1_u5aif"]
 [ext_resource type="Texture2D" uid="uid://ttvocnyqtpf7" path="res://Assets/Personajes/Robot.png" id="2_qwty0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eghiw"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(0, 0, 200, 200)
+[sub_resource type="Animation" id="Animation_02v2i"]
+resource_name = "Idle"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 1, 2, 3]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0fyj"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(200, 0, 200, 200)
+[sub_resource type="Animation" id="Animation_dj4u3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1yjb"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(400, 0, 200, 200)
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bau71"]
+_data = {
+&"Idle": SubResource("Animation_02v2i"),
+&"RESET": SubResource("Animation_dj4u3")
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pvmuy"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(600, 0, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_02v2i"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(0, 400, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dj4u3"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(200, 400, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7mu8u"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(400, 400, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bau71"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(600, 400, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4dw1l"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(800, 400, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jv5a1"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(1000, 400, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v12fp"]
-atlas = ExtResource("2_qwty0")
-region = Rect2(0, 600, 200, 200)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qjrax"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eghiw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e0fyj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i1yjb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pvmuy")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_02v2i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dj4u3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dj4u3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7mu8u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bau71")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4dw1l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7mu8u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bau71")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4dw1l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jv5a1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v12fp")
-}],
-"loop": true,
-"name": &"spin",
-"speed": 8.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_32ow8"]
-size = Vector2(96, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02v2i"]
+size = Vector2(96, 152)
 
 [node name="BubbleBot" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_u5aif")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_qjrax")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.514383
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-16, -4)
-shape = SubResource("RectangleShape2D_32ow8")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qwty0")
+hframes = 6
+vframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bau71")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -232)
 process_callback = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_02v2i")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
