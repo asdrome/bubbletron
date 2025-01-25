@@ -106,7 +106,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32ow8"]
-size = Vector2(72, 144)
+size = Vector2(96, 120)
 
 [node name="BubbleBot" type="CharacterBody2D"]
 script = ExtResource("1_u5aif")
@@ -115,10 +115,14 @@ script = ExtResource("1_u5aif")
 sprite_frames = SubResource("SpriteFrames_qjrax")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.695023
+frame_progress = 0.514383
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-20, 0)
+position = Vector2(-16, -4)
 shape = SubResource("RectangleShape2D_32ow8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -232)
+process_callback = 0
