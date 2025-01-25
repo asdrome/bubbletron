@@ -9,7 +9,7 @@ signal was_hit(damage)
 const MAX_HEALTH = 100
 var health = MAX_HEALTH
 
-const PROJECTILE = preload("res://Escenas/disparo_burbuja.tscn")
+const PROJECTILE = preload("res://Escenas/Personajes/disparo_burbuja.tscn")
 
 func _ready() -> void:
 	sprite = $Sprite2D

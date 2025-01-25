@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm0ye7cy0rr66"]
+[gd_scene load_steps=6 format=3 uid="uid://dm0ye7cy0rr66"]
 
-[ext_resource type="Texture2D" uid="uid://drmn2mgtj5cgm" path="res://Assets/IU/Fondo.jpeg" id="1_lnt83"]
+[ext_resource type="Script" uid="uid://bujtnfyqbii7t" path="res://Escenas/IU/menu.gd" id="1_v3o73"]
+[ext_resource type="Texture2D" uid="uid://drmn2mgtj5cgm" path="res://Assets/IU/Fondo.jpeg" id="1_yptop"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p25xy"]
 bg_color = Color(0.244351, 0.311643, 0.550009, 1)
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_v3o73")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -35,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_lnt83")
+texture = ExtResource("1_yptop")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -70,3 +72,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_cp3rd")
 text = "Salir"
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

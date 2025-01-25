@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://df0xn1f7dno1f"]
+
+[ext_resource type="Script" uid="uid://br7neejjr7j0x" path="res://Escenas/main.gd" id="1_6lbni"]
+[ext_resource type="PackedScene" uid="uid://dm0ye7cy0rr66" path="res://Escenas/IU/menu.tscn" id="2_vt1rs"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_6lbni")
+
+[node name="Menu" parent="." instance=ExtResource("2_vt1rs")]
+
+[connection signal="quit" from="Menu" to="." method="_on_menu_quit"]
+[connection signal="start_credits" from="Menu" to="." method="_on_menu_start_credits"]
+[connection signal="start_game" from="Menu" to="." method="_on_menu_start_game"]
