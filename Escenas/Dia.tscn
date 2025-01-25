@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bici0gr67qv50"]
+
+[ext_resource type="PackedScene" uid="uid://cgdjx7lpencvj" path="res://Escenas/BubbleBot.tscn" id="1_37t85"]
+[ext_resource type="Texture2D" uid="uid://cb13viit1k707" path="res://Assets/Escenarios/Dia/Ilustración.jpg" id="2_iffvy"]
+
+[node name="Dia" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_37t85")]
+position = Vector2(232, 568)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+scale = Vector2(0.666667, 0.666667)
+texture = ExtResource("2_iffvy")
+centered = false
