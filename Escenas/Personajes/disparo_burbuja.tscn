@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dne5egkfbvql5" path="res://Escenas/Personajes/disparo_burbuja.gd" id="1_s5f7f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4n00"]
-radius = 31.4006
+radius = 24.0
 
 [node name="Disparo Burbuja" type="Area2D"]
 script = ExtResource("1_s5f7f")
@@ -14,6 +14,7 @@ shape = SubResource("CircleShape2D_p4n00")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_p4n00")
 
 [node name="Timer" type="Timer" parent="."]
