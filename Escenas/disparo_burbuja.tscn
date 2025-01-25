@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqb0qxjxngyx6"]
 
 [ext_resource type="Texture2D" uid="uid://b7shng1ny16q" path="res://Assets/Personajes/Burbuja.png" id="1_p4n00"]
-[ext_resource type="Script" uid="uid://dne5egkfbvql5" path="res://Escenas/disparo_burbuja.gd" id="1_s5f7f"]
+[ext_resource type="Script" path="res://Escenas/disparo_burbuja.gd" id="1_s5f7f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4n00"]
 radius = 31.4006
