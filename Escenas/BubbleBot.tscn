@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgdjx7lpencvj"]
+[gd_scene load_steps=16 format=3 uid="uid://cgdjx7lpencvj"]
 
-[ext_resource type="Script" path="res://Escenas/bubble_bot.gd" id="1_u5aif"]
+[ext_resource type="Script" uid="uid://dyqyhyxt2uxh7" path="res://Escenas/bubble_bot.gd" id="1_u5aif"]
 [ext_resource type="Texture2D" uid="uid://ttvocnyqtpf7" path="res://Assets/Personajes/Robot.png" id="2_qwty0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eghiw"]
@@ -18,6 +18,34 @@ region = Rect2(400, 0, 200, 200)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvmuy"]
 atlas = ExtResource("2_qwty0")
 region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02v2i"]
+atlas = ExtResource("2_qwty0")
+region = Rect2(0, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj4u3"]
+atlas = ExtResource("2_qwty0")
+region = Rect2(200, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mu8u"]
+atlas = ExtResource("2_qwty0")
+region = Rect2(400, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bau71"]
+atlas = ExtResource("2_qwty0")
+region = Rect2(600, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dw1l"]
+atlas = ExtResource("2_qwty0")
+region = Rect2(800, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv5a1"]
+atlas = ExtResource("2_qwty0")
+region = Rect2(1000, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v12fp"]
+atlas = ExtResource("2_qwty0")
+region = Rect2(0, 600, 200, 200)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qjrax"]
 animations = [{
@@ -37,19 +65,60 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02v2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj4u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj4u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mu8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bau71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dw1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mu8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bau71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dw1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv5a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v12fp")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32ow8"]
 size = Vector2(72, 144)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="BubbleBot" type="CharacterBody2D"]
 script = ExtResource("1_u5aif")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qjrax")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.695023
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-20, 0)
 shape = SubResource("RectangleShape2D_32ow8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
