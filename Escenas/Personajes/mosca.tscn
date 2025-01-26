@@ -8,14 +8,15 @@ radius = 33.2415
 
 [sub_resource type="Animation" id="Animation_hdag3"]
 resource_name = "Attack"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [14, 15]
@@ -60,9 +61,11 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hb735"]
-radius = 32.5576
+radius = 461.017
 
 [node name="Mosca" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 4
 script = ExtResource("1_nkqhe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -79,11 +82,14 @@ shape = SubResource("CircleShape2D_8kveb")
 libraries = {
 &"": SubResource("AnimationLibrary_4bvn6")
 }
-autoplay = "fly"
+autoplay = "Attack"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_hb735")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
