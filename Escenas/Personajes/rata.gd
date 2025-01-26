@@ -8,7 +8,7 @@ extends CharacterBody2D
 const EXPLOSION = preload("res://Escenas/Personajes/Explosion.tscn")
 
 func _ready() -> void:
-	sprite = $Sprite2D
+	sprite = $RataSprite
 	animation_player.play("Walk")
 
 func _process(_delta: float) -> void:
@@ -29,7 +29,6 @@ func _process(_delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
-		set_physics_process(false)
 		queue_free()
 	else:
 		animation_player.play("Walk")
@@ -38,8 +37,16 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("burbuja"):
 		animation_player.play("Death")
+		set_process(false)
+		set_physics_process(false)
 		#var explosion = EXPLOSION.instantiate()
 		#explosion.global_position = global_position
 		#add_sibling(explosion)
 	if area.is_in_group("Jugador"):
 		animation_player.play("Attack")
+	if area.is_in_group("JugadorHitBox"):
+		set_process(false)
+		set_physics_process(false)
+		animation_player.play("Death")
+		await get_tree().create_timer(1).timeout
+		queue_free()

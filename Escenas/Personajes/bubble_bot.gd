@@ -6,14 +6,18 @@ signal was_hit(damage)
 @export var speed = 300
 @onready var sprite : Sprite2D
 @onready var animation_player = $AnimationPlayer
+@onready var hitbox : Area2D = $HitBox  # Nodo de la hitbox
+
 const MAX_HEALTH = 100
 var health = MAX_HEALTH
+
 
 const PROJECTILE = preload("res://Escenas/Personajes/disparo_burbuja.tscn")
 
 func _ready() -> void:
 	sprite = $Sprite2D
 	animation_player.play("Idle")
+	hitbox.monitoring = true
 	
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -56,6 +60,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
 		has_died.emit()
 		queue_free()
+		
+	elif anim_name == "Spin":
+		hitbox.monitoring = false 
 	else:
 		animation_player.play("Idle")
 
