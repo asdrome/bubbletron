@@ -70,3 +70,10 @@ func take_damage(damage):
 		was_hit.emit(damage)
 		animation_player.play("Hit")
 		
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemigos"):
+		take_damage(5)
+	if area.is_in_group("Projectiles"):
+		take_damage(1)

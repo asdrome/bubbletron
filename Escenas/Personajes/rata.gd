@@ -15,18 +15,17 @@ func _process(_delta: float) -> void:
 	var players = get_tree().get_nodes_in_group("Jugador")
 	if !players.is_empty():
 		var player = players[0]
-		var distance = player.global_position - global_position
-		var direction = distance.normalized()
+		var distance = global_position.distance_to(player.global_position)
+		speed = distance/2
+		var direction = (player.global_position - global_position).normalized()
 		if direction.x < 0:
 			sprite.flip_h = false
 		else:
 			sprite.flip_h = true
-		velocity = direction * speed 
+		velocity = direction * speed
 	
 	move_and_slide()
 		
-
-
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
