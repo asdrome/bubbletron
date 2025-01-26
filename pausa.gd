@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+signal reanudar
+signal reiniciar
+signal salir
+
 # Variables para controlar el audio
 @export var musica: AudioStreamPlayer
 @export var efectos: AudioStreamPlayer
@@ -14,9 +18,15 @@ extends CanvasLayer
 #	barra_efectos.value = efectos.volume_db
 
 # Conecta los botones de la interfaz
-@onready var boton_guardar = $Panel/VBoxContainer/HBoxBotones/Salir
-@onready var boton_reintentar = $Panel/VBoxContainer/HBoxBotones/Reiniciar
+@onready var boton_salir_menu = $Panel/VBoxContainer/HBoxBotones/Salir
+@onready var boton_reiniciar = $Panel/VBoxContainer/HBoxBotones/Reiniciar
 @onready var boton_reanudar = $Panel/VBoxContainer/HBoxBotones/Continuar
+
+func _ready():
+	# Conectar señales de los botones
+	boton_reanudar.connect("pressed", Callable(self, "_on_reanudar_pressed"))
+	boton_reiniciar.connect("pressed", Callable(self, "_on_reiniciar_pressed"))
+	boton_salir_menu.connect("pressed", Callable(self, "_on_salir_pressed"))
 
 
 # Función para pausar el juego
@@ -38,15 +48,29 @@ func ajustar_efectos(value):
 	efectos.volume_db = value
 
 # Conecta las señales de los botones
-func _on_SaveAndExit_pressed():
+func _on_quit_pressed():
 	print("Guardar y salir del juego")
 	# Implementa lógica para guardar el progreso y cerrar la aplicación
 	get_tree().quit()
 	
 
-func _on_Retry_pressed():
+func _on_retry_pressed():
 	print("Reiniciar el nivel")
 	get_tree().reload_current_scene()
 
-func _on_Resume_pressed():
-	reanudar_juego()
+func _on_resume_pressed():
+	print("Continual el nivel")
+	get_tree().paused = false
+	visible = false  # Oculta la escena de pausa
+	
+# Emitir señal para reanudar el juego
+func _on_reanudar_pressed():
+	reanudar.emit()
+
+# Emitir señal para reiniciar el nivel
+func _on_reiniciar_pressed():
+	reiniciar.emit()
+
+# Emitir señal para salir al menú
+func _on_salir_pressed():
+	salir.emit()

@@ -28,6 +28,7 @@ offset_bottom = 514.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bq1m0")
 
 [node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 2.0
 offset_right = 847.0
@@ -118,9 +119,3 @@ flat = true
 autowrap_mode = 2
 clip_text = true
 icon_alignment = 1
-
-[node name="ColorRect2" type="ColorRect" parent="Panel/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-color = Color(0.535346, 0.907933, 0.689082, 0.478431)

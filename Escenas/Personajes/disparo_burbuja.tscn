@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqb0qxjxngyx6"]
+[gd_scene load_steps=5 format=3 uid="uid://cqb0qxjxngyx6"]
 
 [ext_resource type="Script" uid="uid://dne5egkfbvql5" path="res://Escenas/Personajes/disparo_burbuja.gd" id="1_s5f7f"]
 [ext_resource type="Texture2D" uid="uid://bgi4h30m0p5u3" path="res://Assets/Personajes/OtraBurbuja.png" id="2_0hegq"]
+[ext_resource type="AudioStream" uid="uid://dufjqorctmsan" path="res://Assets/IU/Sonidos/Burbujas.mp3" id="3_a7014"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4n00"]
 radius = 15.0333
@@ -21,5 +22,10 @@ texture = ExtResource("2_0hegq")
 process_callback = 0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a7014")
+volume_db = 9.259
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
