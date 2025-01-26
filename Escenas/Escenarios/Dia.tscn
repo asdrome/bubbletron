@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bici0gr67qv50"]
+[gd_scene load_steps=10 format=3 uid="uid://bici0gr67qv50"]
 
 [ext_resource type="Script" uid="uid://ds1jbcm7y7uw6" path="res://Escenas/Escenarios/dia.gd" id="1_4rv1k"]
 [ext_resource type="PackedScene" uid="uid://cgdjx7lpencvj" path="res://Escenas/Personajes/BubbleBot.tscn" id="1_37t85"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blkskmetukdso" path="res://Escenas/Personajes/mosca.tscn" id="3_4u4cl"]
 [ext_resource type="Texture2D" uid="uid://dyrfoh3xuwkuj" path="res://Assets/Escenarios/Dia/Fondo_001.png" id="3_8ph5s"]
 [ext_resource type="Texture2D" uid="uid://bs7yj13rd2r86" path="res://Assets/Escenarios/Dia/Fondo_002.png" id="4_5m4pt"]
+[ext_resource type="Script" uid="uid://bs8do7jrekymd" path="res://Escenas/Personajes/rata.gd" id="4_ewmbd"]
 [ext_resource type="Texture2D" uid="uid://c8et7ihqc7ad0" path="res://Assets/Escenarios/Dia/Fondo_003.png" id="5_obb1r"]
 [ext_resource type="PackedScene" uid="uid://1n23g0d8jcth" path="res://Escenas/Personajes/rata.tscn" id="8_ewmbd"]
 
@@ -29,6 +30,7 @@ position = Vector2(839, 378)
 
 [node name="Mosca5" parent="." instance=ExtResource("3_4u4cl")]
 position = Vector2(1032, 217)
+script = ExtResource("4_ewmbd")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -66,10 +68,6 @@ motion_mirroring = Vector2(1270, 0)
 scale = Vector2(0.666667, 0.666667)
 texture = ExtResource("5_obb1r")
 centered = false
-
-[node name="raton" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/raton"]
 
 [node name="Rata" parent="." instance=ExtResource("8_ewmbd")]
 position = Vector2(424, 608)
