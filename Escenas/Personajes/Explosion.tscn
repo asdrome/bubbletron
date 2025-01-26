@@ -26,7 +26,7 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_37alu")
 animation = &"Explosion"
 autoplay = "Explosion"
-frame_progress = 0.153213
+frame_progress = 0.788247
 script = ExtResource("4_k21ek")
 
 [node name="Timer" type="Timer" parent="."]
