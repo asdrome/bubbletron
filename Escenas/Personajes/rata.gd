@@ -26,9 +26,6 @@ func _process(_delta: float) -> void:
 	move_and_slide()
 		
 
-
-
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
 		queue_free()
