@@ -3,8 +3,8 @@ extends Node2D
 @export var enemy_scenes: Array[PackedScene] = [] # Lista de escenas de enemigos
 @export var spawn_radius_min: float = 200.0   # Distancia mínima al jugador
 @export var spawn_radius_max: float = 600.0   # Distancia máxima al jugador
-@export var spawn_interval: float = 2.0       # Tiempo entre spawn
-@export var max_enemies: int = 10             # Límite de enemigos en la escena
+@export var spawn_interval: float = 1.5       # Tiempo entre spawn
+@export var max_enemies: int = 15             # Límite de enemigos en la escena
 
 var player: CharacterBody2D  # Referencia al jugador
 var screen_size: Vector2  # Tamaño de la pantalla

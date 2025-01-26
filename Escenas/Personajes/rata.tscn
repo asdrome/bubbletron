@@ -4,11 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://p1b0jpufk30p" path="res://Assets/Personajes/Rata.png" id="1_xga6c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7j181"]
-radius = 32.0
+radius = 64.4981
 
 [sub_resource type="Animation" id="Animation_qpnyk"]
 resource_name = "Attack"
-loop_mode = 1
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false

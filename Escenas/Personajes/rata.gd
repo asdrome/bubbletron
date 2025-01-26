@@ -40,3 +40,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		explosion.global_position = global_position
 		add_sibling(explosion)
 		queue_free()
+	if area.is_in_group("Jugador"):
+		print("Tocao")
+		animation_player.play("Attack")

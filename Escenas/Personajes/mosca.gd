@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 100
+@export var speed = 200
 @export var movement_vector : Vector2 = Vector2.LEFT
 
 @onready var sprite : Sprite2D
