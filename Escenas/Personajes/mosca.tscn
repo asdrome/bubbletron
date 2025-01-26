@@ -1,25 +1,27 @@
 [gd_scene load_steps=7 format=3 uid="uid://blkskmetukdso"]
 
-[ext_resource type="Script" uid="uid://cqfri8kjf2a4o" path="res://Escenas/Personajes/mosca.gd" id="1_nkqhe"]
-[ext_resource type="Texture2D" uid="uid://ctx1xoabe0jcm" path="res://Assets/Personajes/Primal Aspid - atlas0 #0330044.png" id="2_hdag3"]
+[ext_resource type="Script" path="res://Escenas/Personajes/mosca.gd" id="1_nkqhe"]
+[ext_resource type="Texture2D" uid="uid://ctx1xoabe0jcm" path="res://Assets/Personajes/Mosca.png" id="2_hdag3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kveb"]
 radius = 40.7922
 
 [sub_resource type="Animation" id="Animation_jcg11"]
 resource_name = "Attack"
-length = 0.8
+length = 1.00003
+loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 2, 12, 0]
+"values": [0, 15, 12, 0]
 }
 
 [sub_resource type="Animation" id="Animation_fv6do"]
@@ -48,7 +50,6 @@ script = ExtResource("1_nkqhe")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
 texture = ExtResource("2_hdag3")
 hframes = 4
 vframes = 4

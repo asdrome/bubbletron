@@ -1,5 +1,5 @@
-extends Node
-@export var speed = 200
+extends Area2D
+@export var speed = 20
 @export var movement_vector : Vector2 = Vector2.LEFT
 
 @onready var sprite : Sprite2D
@@ -9,15 +9,10 @@ const EXPLOSION = preload("res://Escenas/Personajes/Explosion.tscn")
 
 func _ready() -> void:
 	sprite = $Sprite2D
-	animation_player.play("Attack")
+	animation_player.play("Walk")
 
 func _process(delta: float) -> void:
 	translate(movement_vector * speed * delta)
-	position.y += sin(position.x * delta) * 4
-
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	animation_player.play("Attack")
-
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("burbuja"):
@@ -25,3 +20,11 @@ func _on_area_entered(area: Area2D) -> void:
 		explosion.global_position = global_position
 		add_sibling(explosion)
 		queue_free()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Death":
+		queue_free()
+	else:
+		animation_player.play("Walk")
+	animation_player.play("Idle")

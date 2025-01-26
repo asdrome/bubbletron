@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctx1xoabe0jcm"
-path="res://.godot/imported/Primal Aspid - atlas0 #0330044.png-f04c0f4cd05a7bc18d655ea54dc50273.ctex"
+uid="uid://c2dnbiqj1726k"
+path="res://.godot/imported/tileset.png-8c5194d55471cc84e575d5c9c1ce65a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Personajes/Primal Aspid - atlas0 #0330044.png"
-dest_files=["res://.godot/imported/Primal Aspid - atlas0 #0330044.png-f04c0f4cd05a7bc18d655ea54dc50273.ctex"]
+source_file="res://Assets/Escenarios/tileset.png"
+dest_files=["res://.godot/imported/tileset.png-8c5194d55471cc84e575d5c9c1ce65a7.ctex"]
 
 [params]
 
