@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bici0gr67qv50"]
+[gd_scene load_steps=14 format=4 uid="uid://bici0gr67qv50"]
 
 [ext_resource type="Script" uid="uid://ds1jbcm7y7uw6" path="res://Escenas/Escenarios/dia.gd" id="1_4rv1k"]
 [ext_resource type="PackedScene" uid="uid://cgdjx7lpencvj" path="res://Escenas/Personajes/BubbleBot.tscn" id="1_37t85"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blf6r2vaq2pwk" path="res://Assets/Escenarios/Background_01.png" id="4_4rv1k"]
 [ext_resource type="Texture2D" uid="uid://extycocu65f8" path="res://Assets/Escenarios/Background_02.png" id="5_4rv1k"]
 [ext_resource type="Texture2D" uid="uid://c2dnbiqj1726k" path="res://Assets/Escenarios/tileset.png" id="6_4rv1k"]
+[ext_resource type="Texture2D" uid="uid://bau2otjfuo5oo" path="res://Assets/Personajes/cangrejo.png" id="8_ewmbd"]
 [ext_resource type="PackedScene" uid="uid://cfjnw55a7vahs" path="res://Escenas/Escenarios/spawner.tscn" id="8_f6863"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4u4cl"]
@@ -623,5 +624,11 @@ shape = SubResource("WorldBoundaryShape2D_tweeq")
 shape = SubResource("WorldBoundaryShape2D_4u4cl")
 
 [node name="Spawner" parent="." instance=ExtResource("8_f6863")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1992, 416)
+texture = ExtResource("8_ewmbd")
+hframes = 7
+vframes = 7
 
 [connection signal="has_died" from="BubbleBot" to="." method="_on_bubble_bot_has_died"]
