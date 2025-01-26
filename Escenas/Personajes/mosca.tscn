@@ -1,21 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://blkskmetukdso"]
+[gd_scene load_steps=10 format=3 uid="uid://blkskmetukdso"]
 
-[ext_resource type="Script" uid="uid://cqfri8kjf2a4o" path="res://Escenas/Personajes/mosca.gd" id="1_nkqhe"]
+[ext_resource type="Script" path="res://Escenas/Personajes/mosca.gd" id="1_nkqhe"]
 [ext_resource type="Texture2D" uid="uid://dvu6ql1c77tla" path="res://Assets/Personajes/Ilustración2 (3).png" id="2_nkqhe"]
+[ext_resource type="AudioStream" uid="uid://dnc507av83p8r" path="res://Assets/IU/Sonidos/Ratón.mp3" id="3_hdag3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kveb"]
 radius = 33.2415
 
 [sub_resource type="Animation" id="Animation_hdag3"]
 resource_name = "Attack"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [14, 15]
@@ -60,9 +62,11 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hb735"]
-radius = 32.5576
+radius = 461.017
 
 [node name="Mosca" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 4
 script = ExtResource("1_nkqhe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -79,11 +83,20 @@ shape = SubResource("CircleShape2D_8kveb")
 libraries = {
 &"": SubResource("AnimationLibrary_4bvn6")
 }
-autoplay = "fly"
+autoplay = "Attack"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_hb735")
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hdag3")
+volume_db = -1.677
+pitch_scale = 1.31
+autoplay = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

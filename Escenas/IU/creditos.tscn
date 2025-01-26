@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqw108gp60gra"]
+
+[ext_resource type="Script" uid="uid://bujtnfyqbii7t" path="res://Escenas/IU/menu.gd" id="1_61u3r"]
+[ext_resource type="Texture2D" uid="uid://drmn2mgtj5cgm" path="res://Assets/IU/Fondo.jpeg" id="2_io18b"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61u3r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278498, 0.429503, 0.553788, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_io18b")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

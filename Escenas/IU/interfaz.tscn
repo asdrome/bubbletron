@@ -1,74 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://8sm1i7dpvupv"]
+[gd_scene load_steps=4 format=3 uid="uid://8sm1i7dpvupv"]
 
-[ext_resource type="Texture2D" uid="uid://dkwmrgfsosgeg" path="res://Assets/IU/Bateria1.png" id="1_vtath"]
-[ext_resource type="Texture2D" uid="uid://bpui78x02ojrx" path="res://Assets/IU/PilaVacia.png" id="2_267q1"]
-[ext_resource type="Texture2D" uid="uid://bqqw21x8kp3ap" path="res://Assets/IU/Pila.png" id="3_g7d0v"]
+[ext_resource type="Texture2D" uid="uid://dix2bvug8hrhh" path="res://Assets/IU/Pilat.png" id="1_08p46"]
+[ext_resource type="Script" uid="uid://dklqkkkmay7sn" path="res://Escenas/IU/interfaz.gd" id="1_coc63"]
 [ext_resource type="Texture2D" uid="uid://cq5f41jb7cvrw" path="res://Assets/IU/Burbuja.png" id="4_godj0"]
 
 [node name="Control" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_coc63")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-scale = Vector2(0.94184, 0.947166)
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("1_vtath")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("1_vtath")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 104)
-layout_mode = 2
-texture = ExtResource("1_vtath")
-expand_mode = 1
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-fill_mode = 2
-texture_under = ExtResource("2_267q1")
-texture_progress = ExtResource("3_g7d0v")
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TextureProgressBar"]
 visible = false
-layout_mode = 0
-offset_left = 102.256
-offset_top = 157.371
-offset_right = 142.256
-offset_bottom = 180.371
-scale = Vector2(1.87247, 2.32549)
-text = "100"
+layout_mode = 2
+size_flags_horizontal = 6
+fill_mode = 3
+texture_under = ExtResource("1_08p46")
+texture_progress = ExtResource("1_08p46")
+tint_under = Color(0, 0.84, 0.042, 1)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_08p46")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
@@ -81,3 +79,33 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("4_godj0")
 expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 30.0
+offset_right = 200.0
+offset_bottom = 94.0
+grow_horizontal = 2
+step = 1.0
+value = 100.0
+rounded = true
+
+[node name="Margen" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 0

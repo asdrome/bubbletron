@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxye5yq6e26xt"]
+
+[ext_resource type="Script" uid="uid://c0uenhgoxb1tl" path="res://disparo_mosca.gd" id="1_2m31a"]
+[ext_resource type="Texture2D" uid="uid://dvu6ql1c77tla" path="res://Assets/Personajes/Ilustración2 (3).png" id="2_vyyda"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4n00"]
+radius = 15.0333
+
+[node name="Disparo mosca" type="Area2D" groups=["proyectiles"]]
+script = ExtResource("1_2m31a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p4n00")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_vyyda")
+hframes = 6
+vframes = 6
+frame = 20
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
