@@ -29,6 +29,7 @@ func _process(_delta: float) -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
+		set_physics_process(false)
 		queue_free()
 	else:
 		animation_player.play("Walk")
@@ -36,10 +37,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("burbuja"):
-		var explosion = EXPLOSION.instantiate()
-		explosion.global_position = global_position
-		add_sibling(explosion)
-		queue_free()
+		animation_player.play("Death")
+		#var explosion = EXPLOSION.instantiate()
+		#explosion.global_position = global_position
+		#add_sibling(explosion)
 	if area.is_in_group("Jugador"):
-		print("Tocao")
 		animation_player.play("Attack")
+	if area.is_in_group("JugadorHitBox"):
+		animation_player.play("Death")

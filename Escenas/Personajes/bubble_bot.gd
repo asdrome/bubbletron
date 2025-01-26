@@ -75,5 +75,5 @@ func take_damage(damage):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
 		take_damage(5)
-	if area.is_in_group("Projectiles"):
+	if area.is_in_group("Proyectiles"):
 		take_damage(1)
