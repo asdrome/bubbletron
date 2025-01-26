@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtq414yvt2uxm"]
+
+[ext_resource type="Texture2D" uid="uid://dhuxbblc7flbt" path="res://Assets/Personajes/explosion2.png" id="1_3a1hk"]
+[ext_resource type="Texture2D" uid="uid://eia4ix4uwd3f" path="res://Assets/Personajes/explosion1.png" id="2_2whc1"]
+[ext_resource type="Texture2D" uid="uid://c3breyk5yy1r8" path="res://Assets/Personajes/explosion3.png" id="3_2logx"]
+[ext_resource type="Script" uid="uid://brpx3jwjjcn02" path="res://Escenas/Personajes/explosion.gd" id="4_k21ek"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37alu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3a1hk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2whc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2logx")
+}],
+"loop": true,
+"name": &"Explosion",
+"speed": 5.0
+}]
+
+[node name="Esplosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_37alu")
+animation = &"Explosion"
+autoplay = "Explosion"
+frame_progress = 0.153213
+script = ExtResource("4_k21ek")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
