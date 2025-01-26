@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm0ye7cy0rr66"]
+[gd_scene load_steps=8 format=3 uid="uid://dm0ye7cy0rr66"]
 
 [ext_resource type="Script" uid="uid://bujtnfyqbii7t" path="res://Escenas/IU/menu.gd" id="1_v3o73"]
 [ext_resource type="Texture2D" uid="uid://drmn2mgtj5cgm" path="res://Assets/IU/Fondo.jpeg" id="1_yptop"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p25xy"]
-bg_color = Color(0.244351, 0.311643, 0.550009, 1)
+[ext_resource type="FontFile" uid="uid://q64qy8xt5s54" path="res://Assets/IU/Cafeteria-Bold.otf" id="3_un3wq"]
+[ext_resource type="Texture2D" uid="uid://dgesoumyld68n" path="res://Assets/IU/Boton2.png" id="4_q7f15"]
+[ext_resource type="Texture2D" uid="uid://c6va407ft45m2" path="res://Assets/IU/Boton3.png" id="5_e28rs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17m5t"]
 bg_color = Color(0.243137, 0.309804, 0.54902, 1)
@@ -42,36 +42,50 @@ expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -66.0
-offset_right = 104.0
-offset_bottom = 66.0
+anchor_bottom = 1.0
+offset_left = -137.5
+offset_top = -430.0
+offset_right = 137.5
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 22
+grow_vertical = 0
 
 [node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_un3wq")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_p25xy")
 text = "Jugar"
+icon = ExtResource("4_q7f15")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
 
 [node name="Creditos" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_un3wq")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_17m5t")
 text = "Creditos"
+icon = ExtResource("4_q7f15")
+flat = true
+autowrap_mode = 2
+clip_text = true
+icon_alignment = 1
 
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_un3wq")
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_cp3rd")
 text = "Salir"
+icon = ExtResource("5_e28rs")
+flat = true
+autowrap_mode = 2
+clip_text = true
+icon_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Creditos" to="." method="_on_creditos_pressed"]
