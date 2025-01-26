@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://blkskmetukdso" path="res://Escenas/Personajes/mosca.tscn" id="3_4u4cl"]
 [ext_resource type="Texture2D" uid="uid://dyrfoh3xuwkuj" path="res://Assets/Escenarios/Dia/Fondo_001.png" id="3_8ph5s"]
 [ext_resource type="Texture2D" uid="uid://bs7yj13rd2r86" path="res://Assets/Escenarios/Dia/Fondo_002.png" id="4_5m4pt"]
-[ext_resource type="Script" path="res://Escenas/Personajes/rata.gd" id="4_ewmbd"]
+[ext_resource type="Script" uid="uid://bat0afg8pf56f" path="res://Escenas/Personajes/rata.gd" id="4_ewmbd"]
 [ext_resource type="PackedScene" uid="uid://cyd0b8phlfnt8" path="res://Escenas/Personajes/rata.tscn" id="5_f6863"]
 
 [node name="Dia" type="Node2D"]
