@@ -17,19 +17,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_2logx")
 }],
-"loop": true,
+"loop": false,
 "name": &"Explosion",
 "speed": 5.0
 }]
 
-[node name="Esplosion" type="AnimatedSprite2D"]
+[node name="Explosion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_37alu")
 animation = &"Explosion"
 autoplay = "Explosion"
 frame_progress = 0.153213
 script = ExtResource("4_k21ek")
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
