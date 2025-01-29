@@ -4,21 +4,15 @@ signal has_died
 signal was_hit(damage)
 
 @export var speed = 300
-@onready var sprite : Sprite2D
+@onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 @onready var hitbox : Area2D = $HitBox  # Nodo de la hitbox
 
 const MAX_HEALTH = 100
 var health = MAX_HEALTH
 
-
 const PROJECTILE = preload("res://Escenas/Personajes/disparo_burbuja.tscn")
 
-func _ready() -> void:
-	sprite = $Sprite2D
-	animation_player.play("Idle")
-	hitbox.monitoring = true
-	
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	if input_direction.x < 0:
@@ -27,6 +21,11 @@ func get_input():
 		sprite.flip_h = false
 	
 	velocity = input_direction * speed
+	
+func _process(_delta: float) -> void:
+	if !animation_player.is_playing(): 
+		animation_player.play("Idle")
+	
 
 func _physics_process(_delta):
 	get_input()
@@ -60,11 +59,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Death":
 		has_died.emit()
 		queue_free()
-		
-	elif anim_name == "Spin":
-		hitbox.monitoring = false 
-	else:
-		animation_player.play("Idle")
 
 func take_damage(damage):
 	var prev_hp = health
@@ -79,7 +73,7 @@ func take_damage(damage):
 		
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemigos"):
 		take_damage(5)
 	if area.is_in_group("Proyectiles"):

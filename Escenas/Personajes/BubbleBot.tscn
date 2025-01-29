@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jv5a1"]
 resource_name = "Hit"
-step = 0.333333
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,10 +29,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.666),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 34, 0]
+"values": [34, 0]
 }
 
 [sub_resource type="Animation" id="Animation_02v2i"]
@@ -87,7 +87,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(20, 20)]
 }
 
 [sub_resource type="Animation" id="Animation_bau71"]
@@ -130,7 +130,7 @@ tracks/1/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -142,10 +142,10 @@ tracks/2/path = NodePath("HitBox/CollisionShape2D:shape:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.101685),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(176, 20), Vector2(176, 64), Vector2(184, 120), Vector2(20, 20)]
+"values": [Vector2(188, 97.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bau71"]
@@ -162,12 +162,10 @@ _data = {
 size = Vector2(96, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iq1ao"]
-size = Vector2(0, 0)
 
 [node name="BubbleBot" type="CharacterBody2D" groups=["Jugador"]]
 texture_filter = 1
 collision_layer = 2
-collision_mask = 13
 script = ExtResource("1_u5aif")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -187,21 +185,24 @@ process_callback = 0
 limit_left = -120
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 0)
 shape = SubResource("RectangleShape2D_02v2i")
 
-[node name="Contact" type="Area2D" parent="." groups=["Jugador"]]
+[node name="HurtBox" type="Area2D" parent="." groups=["Jugador"]]
+collision_layer = 2
+collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Contact"]
-position = Vector2(-16, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_02v2i")
 
 [node name="HitBox" type="Area2D" parent="." groups=["JugadorHitBox"]]
+collision_layer = 16
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(4, -4)
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_iq1ao")
 disabled = true
+debug_color = Color(0.970275, 0.414761, 0.641089, 0.42)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="Contact" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
