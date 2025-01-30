@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqw108gp60gra"]
 
-[ext_resource type="Script" uid="uid://bujtnfyqbii7t" path="res://Escenas/IU/menu.gd" id="1_61u3r"]
-[ext_resource type="Texture2D" uid="uid://drmn2mgtj5cgm" path="res://Assets/IU/Fondo.jpeg" id="2_io18b"]
+[ext_resource type="Script" uid="uid://wvs4lactdg43" path="res://Escenas/IU/creditos.gd" id="1_5pqoq"]
+[ext_resource type="Texture2D" uid="uid://d1pa2ap6u0ot" path="res://Assets/IU/Sonidos/creditos.png" id="2_5pqoq"]
 
-[node name="Menu" type="Control"]
+[node name="Creditos" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_61u3r")
+script = ExtResource("1_5pqoq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -28,10 +28,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_io18b")
+texture = ExtResource("2_5pqoq")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -69.0
+offset_right = 31.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_button_pressed"]

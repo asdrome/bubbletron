@@ -1,11 +1,15 @@
 extends Node
 
 var starting_scene = preload("res://Escenas/Escenarios/Dia.tscn")
+var credits_scene = preload("res://Escenas/IU/creditos.tscn")
+var current_scene
 
-@onready var current_scene = $Menu
+@onready var menu = $Menu
 @onready var pausa = preload("res://Escenas/IU/pausa.tscn").instantiate()
 
 func _ready() -> void:
+	current_scene = menu
+	menu.visible = true
 	add_child(pausa)
 	pausa.visible = false  # Oculta la pausa inicialmente
 	
@@ -25,19 +29,27 @@ func _on_menu_quit() -> void:
 
 
 func _on_menu_start_credits() -> void:
-	pass # Replace with function body.
-
+	menu.visible = false
+	current_scene = credits_scene.instantiate()
+	add_child(current_scene)
+	current_scene.connect("back_to_menu", _on_back_to_menu)
+	
+func _on_back_to_menu() -> void:
+	current_scene.queue_free()  # Eliminar la escena de créditos
+	current_scene = menu  # Restaurar el menú principal
+	menu.visible = true  # Asegurar que el menú se muestre nuevamente
+	
 
 func _on_menu_start_game() -> void:
+	menu.visible = false
 	current_scene = starting_scene.instantiate()
 	get_tree().root.add_child(current_scene)
-	$Menu.visible = false
 	current_scene.game_over.connect(_on_game_over)
 	
 func _on_game_over() -> void:
 	current_scene.queue_free()
-	current_scene = $Menu
-	$Menu.visible = true
+	current_scene = menu
+	menu.visible = true
 	
 	
 func _input(event):
