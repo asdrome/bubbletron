@@ -3,8 +3,17 @@
 [ext_resource type="Script" uid="uid://dr5xla5wo4qwi" path="res://Escenas/Personajes/eminen.gd" id="1_anldl"]
 [ext_resource type="Texture2D" uid="uid://yxukfjxbm1b6" path="res://Assets/Personajes/eminen.png" id="1_flaff"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anldl"]
+size = Vector2(65, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqjoh"]
+size = Vector2(158, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qep2"]
+size = Vector2(230, 142)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cg7l4"]
-size = Vector2(86, 128)
+size = Vector2(51, 121)
 
 [sub_resource type="Animation" id="Animation_cg7l4"]
 resource_name = "Death"
@@ -56,7 +65,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -83,7 +92,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Sprite2D/HitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,16 +110,9 @@ _data = {
 &"RESET": SubResource("Animation_anldl")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_anldl"]
-size = Vector2(65, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqjoh"]
-size = Vector2(188, 54)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qep2"]
-size = Vector2(230, 142)
-
 [node name="Eminen" type="CharacterBody2D" groups=["Enemigos"]]
+physics_interpolation_mode = 1
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_anldl")
@@ -121,8 +123,37 @@ texture = ExtResource("1_flaff")
 hframes = 3
 vframes = 4
 
+[node name="HurtBox" type="Area2D" parent="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HurtBox"]
+position = Vector2(2.5, -15)
+shape = SubResource("RectangleShape2D_anldl")
+debug_color = Color(0.771103, 0.374125, 0.626121, 0.42)
+
+[node name="HitBox" type="Area2D" parent="Sprite2D" groups=["Enemigos"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
+position = Vector2(-36, -31)
+shape = SubResource("RectangleShape2D_xqjoh")
+disabled = true
+debug_color = Color(0.991356, 0, 0.266632, 0.42)
+
+[node name="AttackBox" type="Area2D" parent="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackBox"]
+shape = SubResource("RectangleShape2D_5qep2")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(3.5, 5.5)
 shape = SubResource("RectangleShape2D_cg7l4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -131,32 +162,6 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(2.5, -15)
-shape = SubResource("RectangleShape2D_anldl")
-debug_color = Color(0.771103, 0.374125, 0.626121, 0.42)
-
-[node name="HitBox" type="Area2D" parent="." groups=["Enemigos"]]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-51, -31)
-shape = SubResource("RectangleShape2D_xqjoh")
-disabled = true
-debug_color = Color(0.991356, 0, 0.266632, 0.42)
-
-[node name="AttackBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
-shape = SubResource("RectangleShape2D_5qep2")
-
+[connection signal="area_entered" from="Sprite2D/HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_entered" from="Sprite2D/AttackBox" to="." method="_on_attack_box_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="area_entered" from="AttackBox" to="." method="_on_attack_box_area_entered"]

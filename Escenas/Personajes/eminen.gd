@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 100
+@export var speed = 90
 @export var movement_vector : Vector2 = Vector2.LEFT
 
 @onready var sprite : Sprite2D = $Sprite2D
@@ -9,6 +9,8 @@ extends CharacterBody2D
 func _process(_delta: float) -> void:
 	if !animation_player.is_playing(): 
 		animation_player.play("Idle")
+
+func _physics_process(_delta: float) -> void:
 	var players = get_tree().get_nodes_in_group("Jugador")
 	if !players.is_empty():
 		var player = players[0]
@@ -22,8 +24,10 @@ func _process(_delta: float) -> void:
 		velocity = direction * speed
 	
 	move_and_slide()	
+	
 
 func _on_hurt_box_area_entered(_area: Area2D) -> void:
+	set_physics_process(false)
 	animation_player.play("Death")
 	
 func _on_attack_box_area_entered(_area: Area2D) -> void:

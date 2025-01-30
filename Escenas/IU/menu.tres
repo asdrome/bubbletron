@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dd3gq4t7cc7pg"]
+
+[ext_resource type="FontFile" uid="uid://bwqim7y20f7rh" path="res://Assets/Fuentes/monogram.ttf" id="1_4mj5l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mj5l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vc65v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4escw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt6ff"]
+
+[resource]
+default_font = ExtResource("1_4mj5l")
+Button/colors/font_color = Color(0.952941, 0.690196, 0.27451, 1)
+Button/colors/font_focus_color = Color(0.937255, 0.431373, 0.588235, 1)
+Button/colors/font_hover_color = Color(0.937255, 0.431373, 0.588235, 1)
+Button/colors/font_outline_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_pressed_color = Color(0.415686, 0.992157, 0.992157, 1)
+Button/constants/outline_size = 18
+Button/font_sizes/font_size = 96
+Button/fonts/font = ExtResource("1_4mj5l")
+Button/styles/focus = SubResource("StyleBoxEmpty_4mj5l")
+Button/styles/hover = SubResource("StyleBoxEmpty_vc65v")
+Button/styles/normal = SubResource("StyleBoxEmpty_4escw")
+Button/styles/pressed = SubResource("StyleBoxEmpty_yt6ff")
+Label/constants/outline_size = 16
+Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("1_4mj5l")

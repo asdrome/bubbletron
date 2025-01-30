@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dfkdr2v5o17ij"]
 
-[ext_resource type="Script" path="res://pausa.gd" id="1_bq1m0"]
+[ext_resource type="Script" uid="uid://d3huh7wikfiju" path="res://pausa.gd" id="1_bq1m0"]
 [ext_resource type="Texture2D" uid="uid://c36x65u3y37i" path="res://Assets/IU/Boton1.png" id="2_3imym"]
 [ext_resource type="FontFile" uid="uid://q64qy8xt5s54" path="res://Assets/IU/Cafeteria-Bold.otf" id="2_tlc23"]
 [ext_resource type="Texture2D" uid="uid://dgesoumyld68n" path="res://Assets/IU/Boton2.png" id="4_aj718"]

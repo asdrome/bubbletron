@@ -34,7 +34,7 @@ func _physics_process(_delta):
 func _input(event):
 	if event.is_action_pressed("spin"):
 		animation_player.play("Spin")
-	elif event.is_action_pressed("shoot"):
+	elif event.is_action_pressed("shoot") and (animation_player.current_animation != "Spin"):
 		var new_projectile = PROJECTILE.instantiate()
 		
 		# Determinar la dirección del proyectil
@@ -65,8 +65,8 @@ func take_damage(damage):
 	health -= damage
 	
 	if health <= 0.0:
-		# La animacion emitirá la señal
-		animation_player.play("Death")
+		die()
+		
 	elif prev_hp != health:
 		was_hit.emit(damage)
 		animation_player.play("Hit")
@@ -78,3 +78,10 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 		take_damage(5)
 	if area.is_in_group("Proyectiles"):
 		take_damage(1)
+
+## Mata al personaje
+func die() -> void:
+	set_physics_process(false)
+	set_process(false)
+	#  La liberación de memoria y la señal se procesan despues de la animación
+	animation_player.play("Death")
