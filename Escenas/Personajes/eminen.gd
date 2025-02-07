@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 func _process(_delta: float) -> void:
 	if !animation_player.is_playing(): 
-		animation_player.play("Idle")
+		animation_player.play("Walk")
 
 func _physics_process(_delta: float) -> void:
 	var players = get_tree().get_nodes_in_group("Jugador")

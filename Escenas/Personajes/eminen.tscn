@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn5kls8sevbfc"]
+[gd_scene load_steps=13 format=3 uid="uid://bn5kls8sevbfc"]
 
 [ext_resource type="Script" uid="uid://dr5xla5wo4qwi" path="res://Escenas/Personajes/eminen.gd" id="1_anldl"]
 [ext_resource type="Texture2D" uid="uid://yxukfjxbm1b6" path="res://Assets/Personajes/eminen.png" id="1_flaff"]
@@ -102,12 +102,29 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_b7h7v"]
+resource_name = "Walk"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 7, 7, 8]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cg7l4"]
 _data = {
 &"Death": SubResource("Animation_cg7l4"),
 &"Idle": SubResource("Animation_flaff"),
 &"Punch": SubResource("Animation_5qep2"),
-&"RESET": SubResource("Animation_anldl")
+&"RESET": SubResource("Animation_anldl"),
+&"Walk": SubResource("Animation_b7h7v")
 }
 
 [node name="Eminen" type="CharacterBody2D" groups=["Enemigos"]]

@@ -9,7 +9,7 @@ const MOSCAS = preload("res://Escenas/Personajes/mosca.tscn")
 func _ready() -> void:
 	player.position = starting_position
 	spawner.add_enemy_scene(MnMs)
-	# spawner.add_enemy_scene(RATAS)
+	#spawner.add_enemy_scene(RATAS)
 	# spawner.add_enemy_scene(MOSCAS)
 
 func _on_bubble_bot_has_died() -> void:
