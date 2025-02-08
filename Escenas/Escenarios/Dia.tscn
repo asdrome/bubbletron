@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bici0gr67qv50"]
+[gd_scene load_steps=21 format=4 uid="uid://bici0gr67qv50"]
 
 [ext_resource type="Script" uid="uid://ds1jbcm7y7uw6" path="res://Escenas/Escenarios/dia.gd" id="1_4rv1k"]
 [ext_resource type="PackedScene" uid="uid://cgdjx7lpencvj" path="res://Escenas/Personajes/BubbleBot.tscn" id="1_37t85"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://7jopth0finrc" path="res://Assets/IU/fondo.png" id="9_nkn3i"]
 [ext_resource type="FontFile" uid="uid://bwqim7y20f7rh" path="res://Assets/Fuentes/monogram.ttf" id="10_lq2vv"]
 [ext_resource type="Theme" uid="uid://dd3gq4t7cc7pg" path="res://Escenas/IU/menu.tres" id="12_rvbpc"]
+[ext_resource type="AudioStream" uid="uid://bmhut58q0ha7o" path="res://Assets/IU/Sonidos/first_level-2.mp3" id="13_qw03w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4u4cl"]
 resource_name = "Calle"
@@ -681,6 +682,11 @@ layout_mode = 2
 theme = ExtResource("12_rvbpc")
 text = "Salir"
 flat = true
+
+[node name="DiaTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_qw03w")
+volume_db = 15.0
+autoplay = true
 
 [connection signal="has_died" from="BubbleBot" to="." method="_on_bubble_bot_has_died"]
 [connection signal="draw" from="CanvasLayer/Panel" to="CanvasLayer" method="_on_panel_draw"]
