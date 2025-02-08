@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dne5egkfbvql5" path="res://Escenas/Personajes/disparo_burbuja.gd" id="1_s5f7f"]
 [ext_resource type="Texture2D" uid="uid://bgi4h30m0p5u3" path="res://Assets/Personajes/OtraBurbuja.png" id="2_0hegq"]
-[ext_resource type="AudioStream" uid="uid://dufjqorctmsan" path="res://Assets/IU/Sonidos/Burbujas.mp3" id="3_a7014"]
+[ext_resource type="AudioStream" uid="uid://dufjqorctmsan" path="res://Assets/Sonidos/Burbujas.mp3" id="3_a7014"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4n00"]
 radius = 15.0333

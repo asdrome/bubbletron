@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://blkskmetukdso"]
 
-[ext_resource type="Script" path="res://Escenas/Personajes/mosca.gd" id="1_nkqhe"]
+[ext_resource type="Script" uid="uid://cqfri8kjf2a4o" path="res://Escenas/Personajes/mosca.gd" id="1_nkqhe"]
 [ext_resource type="Texture2D" uid="uid://dvu6ql1c77tla" path="res://Assets/Personajes/Ilustración2 (3).png" id="2_nkqhe"]
-[ext_resource type="AudioStream" uid="uid://dnc507av83p8r" path="res://Assets/IU/Sonidos/Ratón.mp3" id="3_hdag3"]
+[ext_resource type="AudioStream" uid="uid://dnc507av83p8r" path="res://Assets/Sonidos/Ratón.mp3" id="3_hdag3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kveb"]
 radius = 33.2415

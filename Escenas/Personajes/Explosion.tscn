@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dhuxbblc7flbt" path="res://Assets/Personajes/explosion2.png" id="1_3a1hk"]
 [ext_resource type="Texture2D" uid="uid://eia4ix4uwd3f" path="res://Assets/Personajes/explosion1.png" id="2_2whc1"]
 [ext_resource type="Texture2D" uid="uid://c3breyk5yy1r8" path="res://Assets/Personajes/explosion3.png" id="3_2logx"]
-[ext_resource type="Script" path="res://Escenas/Personajes/explosion.gd" id="4_k21ek"]
-[ext_resource type="AudioStream" uid="uid://bqp1fw1wrew6r" path="res://Assets/IU/Sonidos/Pop.mp3" id="5_2whc1"]
+[ext_resource type="Script" uid="uid://brpx3jwjjcn02" path="res://Escenas/Personajes/explosion.gd" id="4_k21ek"]
+[ext_resource type="AudioStream" uid="uid://bqp1fw1wrew6r" path="res://Assets/Sonidos/Pop.mp3" id="5_2whc1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_37alu"]
 animations = [{

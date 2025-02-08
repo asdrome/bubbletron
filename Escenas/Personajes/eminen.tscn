@@ -7,7 +7,7 @@
 size = Vector2(65, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqjoh"]
-size = Vector2(158, 54)
+size = Vector2(230, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qep2"]
 size = Vector2(230, 142)
@@ -156,7 +156,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox"]
-position = Vector2(-36, -31)
+position = Vector2(0, -31)
 shape = SubResource("RectangleShape2D_xqjoh")
 disabled = true
 debug_color = Color(0.991356, 0, 0.266632, 0.42)

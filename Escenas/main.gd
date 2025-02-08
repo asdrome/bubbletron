@@ -14,7 +14,8 @@ func _on_menu_quit() -> void:
 	get_tree().quit()
 
 func _end_game() -> void:
-	level.queue_free()
+	level.queue_free()	
+	print(level)
 
 func _show_menu() -> void:
 	menu.show()

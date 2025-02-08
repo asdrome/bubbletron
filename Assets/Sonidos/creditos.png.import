@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1pa2ap6u0ot"
-path="res://.godot/imported/creditos.png-1cfa28f95c809819371720ee261ca073.ctex"
+path="res://.godot/imported/creditos.png-93b62de4d00e857dc4ddbbb76da4256a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/IU/Sonidos/creditos.png"
-dest_files=["res://.godot/imported/creditos.png-1cfa28f95c809819371720ee261ca073.ctex"]
+source_file="res://Assets/Sonidos/creditos.png"
+dest_files=["res://.godot/imported/creditos.png-93b62de4d00e857dc4ddbbb76da4256a.ctex"]
 
 [params]
 

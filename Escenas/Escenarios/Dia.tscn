@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bici0gr67qv50"]
+[gd_scene load_steps=23 format=4 uid="uid://bici0gr67qv50"]
 
 [ext_resource type="Script" uid="uid://ds1jbcm7y7uw6" path="res://Escenas/Escenarios/dia.gd" id="1_4rv1k"]
 [ext_resource type="PackedScene" uid="uid://cgdjx7lpencvj" path="res://Escenas/Personajes/BubbleBot.tscn" id="1_37t85"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://7jopth0finrc" path="res://Assets/IU/fondo.png" id="9_nkn3i"]
 [ext_resource type="FontFile" uid="uid://bwqim7y20f7rh" path="res://Assets/Fuentes/monogram.ttf" id="10_lq2vv"]
 [ext_resource type="Theme" uid="uid://dd3gq4t7cc7pg" path="res://Escenas/IU/menu.tres" id="12_rvbpc"]
-[ext_resource type="AudioStream" uid="uid://bmhut58q0ha7o" path="res://Assets/IU/Sonidos/first_level-2.mp3" id="13_qw03w"]
+[ext_resource type="AudioStream" uid="uid://bmhut58q0ha7o" path="res://Assets/Sonidos/first_level-2.mp3" id="13_qw03w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4u4cl"]
 resource_name = "Calle"
@@ -548,6 +548,12 @@ distance = 300.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4u4cl"]
 normal = Vector2(1, 0)
 
+[sub_resource type="Gradient" id="Gradient_qw03w"]
+colors = PackedColorArray(0, 0, 0, 0.501961, 0, 0, 0, 0.501961)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4q6yb"]
+gradient = SubResource("Gradient_qw03w")
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rvbpc"]
 texture = ExtResource("9_nkn3i")
 
@@ -644,6 +650,14 @@ shape = SubResource("WorldBoundaryShape2D_4u4cl")
 process_mode = 3
 script = ExtResource("9_lq2vv")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_4q6yb")
+
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_left = 241.0
 offset_top = 123.0
@@ -662,31 +676,33 @@ alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/VFlowContainer"]
 layout_mode = 2
-text = "Pausa"
+text = "Paused"
 label_settings = SubResource("LabelSettings_qw03w")
 
-[node name="Reanudar" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
+[node name="Continue" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("12_rvbpc")
-text = "Reanudar"
+text = "Continue"
 flat = true
 
-[node name="Reiniciar" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
+[node name="BackMenu" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("12_rvbpc")
-text = "Reiniciar"
+text = "Back to menu"
 flat = true
 
-[node name="Salir" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
+[node name="Quit" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("12_rvbpc")
-text = "Salir"
+text = "Quit game"
 flat = true
 
 [node name="DiaTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_qw03w")
-volume_db = 15.0
 autoplay = true
 
 [connection signal="has_died" from="BubbleBot" to="." method="_on_bubble_bot_has_died"]
 [connection signal="draw" from="CanvasLayer/Panel" to="CanvasLayer" method="_on_panel_draw"]
+[connection signal="pressed" from="CanvasLayer/Panel/VFlowContainer/Continue" to="CanvasLayer" method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VFlowContainer/BackMenu" to="CanvasLayer" method="_on_back_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VFlowContainer/Quit" to="CanvasLayer" method="_on_quit_pressed"]
