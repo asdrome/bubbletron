@@ -54,6 +54,7 @@ func _on_continue_pressed() -> void:
 
 func _on_back_menu_pressed() -> void:
 	visible = false
+	get_tree().paused = false
 	get_parent()._emit_back_to_menu()
 
 

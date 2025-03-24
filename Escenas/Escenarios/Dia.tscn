@@ -1,8 +1,7 @@
-[gd_scene load_steps=23 format=4 uid="uid://bici0gr67qv50"]
+[gd_scene load_steps=22 format=4 uid="uid://bici0gr67qv50"]
 
 [ext_resource type="Script" uid="uid://ds1jbcm7y7uw6" path="res://Escenas/Escenarios/dia.gd" id="1_4rv1k"]
 [ext_resource type="PackedScene" uid="uid://cgdjx7lpencvj" path="res://Escenas/Personajes/BubbleBot.tscn" id="1_37t85"]
-[ext_resource type="Script" uid="uid://bi8507mnw46us" path="res://Escenas/Escenarios/level2d.gd" id="2_f6863"]
 [ext_resource type="Texture2D" uid="uid://u143r5q5quj5" path="res://Assets/Escenarios/Background.png" id="3_4rv1k"]
 [ext_resource type="Texture2D" uid="uid://blf6r2vaq2pwk" path="res://Assets/Escenarios/Background_01.png" id="4_4rv1k"]
 [ext_resource type="Texture2D" uid="uid://extycocu65f8" path="res://Assets/Escenarios/Background_02.png" id="5_4rv1k"]
@@ -565,7 +564,7 @@ font_size = 140
 y_sort_enabled = true
 script = ExtResource("1_4rv1k")
 starting_position = Vector2(140, 500)
-metadata/_custom_type_script = ExtResource("2_f6863")
+metadata/_custom_type_script = "uid://bi8507mnw46us"
 
 [node name="BubbleBot" parent="." instance=ExtResource("1_37t85")]
 position = Vector2(120, 500)

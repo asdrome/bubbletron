@@ -85,4 +85,3 @@ func die() -> void:
 	set_process(false)
 	#  La liberación de memoria y la señal se procesan despues de la animación
 	animation_player.play("Death")
-	has_died.emit()
