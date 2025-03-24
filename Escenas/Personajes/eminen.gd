@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed = 90
 @export var movement_vector : Vector2 = Vector2.LEFT
 
+const POINTS_VALUE = 100
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_player = $AnimationPlayer
 

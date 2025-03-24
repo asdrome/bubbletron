@@ -1,5 +1,7 @@
 extends Node2D
 
+signal enemy_died(points)
+
 @export var enemy_scenes: Array[PackedScene] = [] # Lista de escenas de enemigos
 @export var spawn_radius_min: float = 200.0   # Distancia mínima al jugador
 @export var spawn_radius_max: float = 600.0   # Distancia máxima al jugador
@@ -51,7 +53,9 @@ func _spawn_enemy():
 	enemies_spawned.append(enemy_instance)
 
 	# Detectar cuando el enemigo es eliminado
-	enemy_instance.tree_exited.connect(func(): enemies_spawned.erase(enemy_instance))
+	enemy_instance.tree_exited.connect(func(): 
+		enemy_died.emit(enemy_instance.POINTS_VALUE)
+		enemies_spawned.erase(enemy_instance))
 
 	# Agregar el enemigo a la escena
 	get_parent().add_child(enemy_instance)

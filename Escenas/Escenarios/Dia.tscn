@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bici0gr67qv50"]
+[gd_scene load_steps=23 format=4 uid="uid://bici0gr67qv50"]
 
 [ext_resource type="Script" uid="uid://ds1jbcm7y7uw6" path="res://Escenas/Escenarios/dia.gd" id="1_4rv1k"]
 [ext_resource type="PackedScene" uid="uid://cgdjx7lpencvj" path="res://Escenas/Personajes/BubbleBot.tscn" id="1_37t85"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://7jopth0finrc" path="res://Assets/IU/fondo.png" id="9_nkn3i"]
 [ext_resource type="FontFile" uid="uid://bwqim7y20f7rh" path="res://Assets/Fuentes/monogram.ttf" id="10_lq2vv"]
 [ext_resource type="Theme" uid="uid://dd3gq4t7cc7pg" path="res://Escenas/IU/menu.tres" id="12_rvbpc"]
+[ext_resource type="Script" uid="uid://20wnump7dawn" path="res://Escenas/Escenarios/game_ui.gd" id="13_4q6yb"]
 [ext_resource type="AudioStream" uid="uid://bmhut58q0ha7o" path="res://Assets/Sonidos/first_level-2.mp3" id="13_qw03w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4u4cl"]
@@ -645,11 +646,12 @@ shape = SubResource("WorldBoundaryShape2D_4u4cl")
 
 [node name="Spawner" parent="." instance=ExtResource("8_f6863")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 3
+visible = false
 script = ExtResource("9_lq2vv")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="PauseMenu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -657,14 +659,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_4q6yb")
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="PauseMenu"]
 offset_left = 241.0
 offset_top = 123.0
 offset_right = 993.0
 offset_bottom = 551.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_rvbpc")
 
-[node name="VFlowContainer" type="HFlowContainer" parent="CanvasLayer/Panel"]
+[node name="VFlowContainer" type="HFlowContainer" parent="PauseMenu/Panel"]
 layout_mode = 2
 offset_left = 203.0
 offset_top = 19.0
@@ -673,24 +675,24 @@ offset_bottom = 307.0
 mouse_filter = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VFlowContainer"]
+[node name="Label" type="Label" parent="PauseMenu/Panel/VFlowContainer"]
 layout_mode = 2
 text = "Paused"
 label_settings = SubResource("LabelSettings_qw03w")
 
-[node name="Continue" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
+[node name="Continue" type="Button" parent="PauseMenu/Panel/VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("12_rvbpc")
 text = "Continue"
 flat = true
 
-[node name="BackMenu" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
+[node name="BackMenu" type="Button" parent="PauseMenu/Panel/VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("12_rvbpc")
 text = "Back to menu"
 flat = true
 
-[node name="Quit" type="Button" parent="CanvasLayer/Panel/VFlowContainer"]
+[node name="Quit" type="Button" parent="PauseMenu/Panel/VFlowContainer"]
 layout_mode = 2
 theme = ExtResource("12_rvbpc")
 text = "Quit game"
@@ -700,8 +702,36 @@ flat = true
 stream = ExtResource("13_qw03w")
 autoplay = true
 
+[node name="GameUI" type="CanvasLayer" parent="."]
+script = ExtResource("13_4q6yb")
+
+[node name="Score" type="Label" parent="GameUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -149.0
+offset_top = 38.0
+offset_right = -41.0
+offset_bottom = 76.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("12_rvbpc")
+text = "000000"
+
+[node name="Health" type="ProgressBar" parent="GameUI"]
+offset_left = 56.0
+offset_top = 38.0
+offset_right = 338.0
+offset_bottom = 71.0
+theme = ExtResource("12_rvbpc")
+theme_override_font_sizes/font_size = 36
+rounded = true
+
 [connection signal="has_died" from="BubbleBot" to="." method="_on_bubble_bot_has_died"]
-[connection signal="draw" from="CanvasLayer/Panel" to="CanvasLayer" method="_on_panel_draw"]
-[connection signal="pressed" from="CanvasLayer/Panel/VFlowContainer/Continue" to="CanvasLayer" method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/VFlowContainer/BackMenu" to="CanvasLayer" method="_on_back_menu_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/VFlowContainer/Quit" to="CanvasLayer" method="_on_quit_pressed"]
+[connection signal="was_hit" from="BubbleBot" to="GameUI" method="_on_bubble_bot_was_hit"]
+[connection signal="enemy_died" from="Spawner" to="GameUI" method="_on_spawner_enemy_died"]
+[connection signal="draw" from="PauseMenu/Panel" to="PauseMenu" method="_on_panel_draw"]
+[connection signal="pressed" from="PauseMenu/Panel/VFlowContainer/Continue" to="PauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/VFlowContainer/BackMenu" to="PauseMenu" method="_on_back_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/VFlowContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
